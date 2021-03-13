@@ -1,0 +1,99 @@
+CÓDIGO IREPORT
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report7" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="12b9bf95-1ae6-4709-ad6b-9af72bde9df9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     USUARIO."USU_CEDULA" AS USUARIO_USU_CEDULA,
+     USUARIO."USU_NOMBRE" AS USUARIO_USU_NOMBRE,
+     USUARIO."USU_APELLIDO" AS USUARIO_USU_APELLIDO,
+     USUARIO."USU_CELULAR" AS USUARIO_USU_CELULAR,
+     AREA_REGISTRO."TIPO_DETALLE" AS AREA_REGISTRO_TIPO_DETALLE,
+     DETALLE_AREA."DET_DESCRIPCION" AS DETALLE_AREA_DET_DESCRIPCION
+FROM
+     "dbo"."AREA_REGISTRO" AREA_REGISTRO INNER JOIN "dbo"."USUARIO" USUARIO ON AREA_REGISTRO."TIPO_CODIGO" = USUARIO."TIPO_CODIGOPK"
+     INNER JOIN "dbo"."DETALLE_AREA" DETALLE_AREA ON AREA_REGISTRO."TIPO_CODIGO" = DETALLE_AREA."TIPO_CODIGO"]]>
+	</queryString>
+	<field name="USUARIO_USU_CEDULA" class="java.lang.Integer"/>
+	<field name="USUARIO_USU_NOMBRE" class="java.lang.String"/>
+	<field name="USUARIO_USU_APELLIDO" class="java.lang.String"/>
+	<field name="USUARIO_USU_CELULAR" class="java.lang.Integer"/>
+	<field name="AREA_REGISTRO_TIPO_DETALLE" class="java.lang.String"/>
+	<field name="DETALLE_AREA_DET_DESCRIPCION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="145" y="0" width="233" height="23" uuid="48c9ac8e-3bcd-4ea1-ae8a-d7621543d1c8"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="16"/>
+				</textElement>
+				<text><![CDATA[REPORTE DETALLE USUARIOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="0aa35861-f54c-4722-b8b6-66048feab1a4"/>
+				<text><![CDATA[DETALLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="100" height="20" uuid="cd4a2e57-f422-49d0-9bd0-cf94b8d5649d"/>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="0" width="75" height="20" uuid="a84efd29-0c96-4e88-8caa-c9d41ae1aa9b"/>
+				<text><![CDATA[CEDULA USUARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="0" width="77" height="20" uuid="06963009-9a23-4423-b9eb-e67fd57a8679"/>
+				<text><![CDATA[NOMBRE USUARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="d9e10a81-33b4-478c-a9e6-155afa6cfccb"/>
+				<text><![CDATA[APELLIDO USUARIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8811be51-079a-4458-b58b-7295b0df879c"/>
+				<textFieldExpression><![CDATA[$F{AREA_REGISTRO_TIPO_DETALLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="160" height="20" uuid="6e48ed3e-dfea-4ea3-8424-ce2c15fba1a0"/>
+				<textFieldExpression><![CDATA[$F{DETALLE_AREA_DET_DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="0" width="75" height="20" uuid="07d4d5f8-be1a-4ff3-94e9-6bc1405eae59"/>
+				<textFieldExpression><![CDATA[$F{USUARIO_USU_CEDULA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="0" width="77" height="20" uuid="25a9212d-ce3f-49e3-8d03-5cb6937bdbe5"/>
+				<textFieldExpression><![CDATA[$F{USUARIO_USU_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="a6c7a084-d69f-4ef1-9ade-1615e23d4d5f"/>
+				<textFieldExpression><![CDATA[$F{USUARIO_USU_APELLIDO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
